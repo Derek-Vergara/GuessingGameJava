@@ -1,13 +1,24 @@
-import java.util.Scanner;
-import javax.swing.JOptionPane;
-import javax.swing.ImageIcon;
+import java.net.URL;
+import javax.swing.*;
 
 
 public class main {
     public static void main(String[] args){
 
-        Scanner sc = new Scanner(System.in);
-		
+        Icon failreDim = null;
+        Icon winreDim = null;
+        // Iconos con URL 
+        URL rutaIcono = main.class.getResource("/resources/fail.jpeg");
+        if (rutaIcono != null){
+            ImageIcon failIcon = new ImageIcon(rutaIcono);
+
+            failreDim = new ImageIcon(failIcon.getImage().getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH));
+        }
+        URL rutaIcono2 = main.class.getResource("/resources/win.jpg");
+        if (rutaIcono2 != null){
+            ImageIcon winIcon = new ImageIcon(rutaIcono2);
+            winreDim = new ImageIcon(winIcon.getImage().getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH));
+        }
 		int random = (int)(Math.random()*100+1);
 		System.out.println("Numero secreto: " + random);
         int guess = 0;
@@ -23,13 +34,18 @@ public class main {
             count++;
             if (guess < random){
                 JOptionPane.showMessageDialog(null, 
-                    "Demasiado pequeño, intenta de nuevo");
+                    "Demasiado pequeño, intenta de nuevo",
+                    "Intento Fallido",JOptionPane.PLAIN_MESSAGE,failreDim);
       
             }else if (guess > random){
-                JOptionPane.showMessageDialog(null, "Demasiado grande, intenta de nuevo");
-            }else {break;}
+                JOptionPane.showMessageDialog(null, "Demasiado grande, intenta de nuevo",
+                "Intento Fallido",JOptionPane.PLAIN_MESSAGE,failreDim);
+            }else
+                 {break;}
         }
-        JOptionPane.showMessageDialog(null, "Felicidades, adivinaste el numero en " + count + " intentos!");
+        JOptionPane.showMessageDialog(null, 
+            "Felicidades, adivinaste el numero en " + count + " intentos!",
+            "Juego Terminado", JOptionPane.INFORMATION_MESSAGE,winreDim);
 
 }
 
