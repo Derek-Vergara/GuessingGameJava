@@ -20,7 +20,7 @@ public class main {
             winreDim = new ImageIcon(winIcon.getImage().getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH));
         }
 		int random = (int)(Math.random()*100+1);
-		System.out.println("Numero secreto: " + random);
+		
         int guess = 0;
         int count = 0;
         
