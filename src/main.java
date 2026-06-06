@@ -47,6 +47,6 @@ public class main {
             "Felicidades, adivinaste el numero en " + count + " intentos!",
             "Juego Terminado", JOptionPane.INFORMATION_MESSAGE,winreDim);
 
-}
+    }
 
 }
